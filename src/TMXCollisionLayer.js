@@ -7,13 +7,13 @@ exports = Class(TMXLayer, function(supr) {
         supr(this, 'init', [opts]);
     };
 
-    this.draw = function(view, start, width) {
+    this.draw = function(start, width) {
         for (var r = 0; r < this._rows; r++) {
             for (var c = start; c < width; c++) {
                 if (this._tiles[r] && this._tiles[r][c]) {
                     var type = this._tiles[r][c];
                     new TMXCollisionTile({
-                        superview: view,
+                        superview: this,
                         index: type - 1,
                         x: c * 64,
                         y: r * 64
